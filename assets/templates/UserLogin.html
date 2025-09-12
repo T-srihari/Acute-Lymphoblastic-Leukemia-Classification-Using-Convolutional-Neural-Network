@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <center>
+    <h1>User Login</h1>
+    <form action="{% url 'UserLoginCheck' %}" method="POST" class="text-primary">
+        <center><p style="color: greenyellow;">should enter the registred details</p></center>
+        {% csrf_token %}
+
+        <div class="form-group row">
+            <div class="col-md-12">
+                <input type="text" class="form-control" name="loginid" required
+                       placeholder="Enter Login Id">
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-md-12">
+                <input type="password" class="form-control" name="pswd" required
+                       placeholder="Enter password">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-12">
+                <br>
+
+                    <input type="submit" class="btn btn-success">
+                    <input type="reset" class="btn btn-outline-dark">
+
+            </div>
+        </div>
+
+
+        <!-- Message -->
+        {% if messages %}
+        {% for message in messages %}
+        <p align="center" class="text-primary"> {{ message }}</p>
+        {% endfor %}
+        {% endif %}
+
+    </form>
+        </center>
+</div>
+{% endblock %}
